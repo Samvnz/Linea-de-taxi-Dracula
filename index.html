@@ -3,179 +3,296 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Taxi Drácula | Puerto Cabello</title>
+    <title>Taxi Drácula · Puerto Cabello</title>
     
     <!-- Meta SEO -->
-    <meta name="description" content="Taxi Drácula en Puerto Cabello. Servicio seguro y profesional 24/7. WhatsApp: 0412-3480093">
+    <meta name="description" content="Servicio de taxi premium en Puerto Cabello. Seguridad, confianza y profesionalismo 24/7. Contacto: 0412-348-0093">
     <meta name="keywords" content="taxi, puerto cabello, transporte, turismo, venezuela, taxi seguro">
+    
+    <!-- Apple Touch Icons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.0.0/css/all.min.css">
     
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     
-    <!-- Fuentes Google -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Fuentes Apple (San Francisco) -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=SF+Pro+Display:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* ===== VARIABLES Y RESET ===== */
+        /* ===== RESET Y VARIABLES APPLE ===== */
         :root {
-            --primary: #FF6B35;      /* Naranja principal */
-            --secondary: #0A2472;    /* Azul marino */
-            --accent: #FF9E6D;       /* Naranja claro */
-            --light: #F8F9FA;        /* Fondo claro */
-            --dark: #0A192F;         /* Texto oscuro */
-            --whatsapp: #25D366;     /* Verde WhatsApp */
-            --instagram: #E1306C;    /* Rosa Instagram */
-            --shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
-            --radius: 16px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            /* Colores Apple */
+            --apple-black: #000000;
+            --apple-white: #FFFFFF;
+            --apple-gray-50: #F5F5F7;
+            --apple-gray-100: #E8E8ED;
+            --apple-gray-200: #D2D2D7;
+            --apple-gray-600: #86868B;
+            --apple-gray-900: #1D1D1F;
+            
+            /* Colores de marca con tono Apple */
+            --primary: #FF3B30;      /* Rojo Apple */
+            --secondary: #007AFF;    /* Azul Apple */
+            --accent: #FF9500;       /* Naranja Apple */
+            --dark: var(--apple-black);
+            --light: var(--apple-white);
+            
+            /* Sombras Apple */
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
+            --shadow-lg: 0 12px 28px rgba(0, 0, 0, 0.12);
+            --shadow-xl: 0 24px 48px rgba(0, 0, 0, 0.15);
+            
+            /* Radios Apple */
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 18px;
+            --radius-xl: 24px;
+            --radius-full: 9999px;
+            
+            /* Transiciones Apple */
+            --transition-fast: 150ms cubic-bezier(0.42, 0, 0.58, 1);
+            --transition-base: 300ms cubic-bezier(0.42, 0, 0.58, 1);
+            --transition-slow: 500ms cubic-bezier(0.42, 0, 0.58, 1);
         }
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
         }
 
-        /* ===== FONDO CON DEGRADADO Y MURCIÉLAGO ===== */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ===== BASE STYLES ===== */
         body {
-            font-family: 'Inter', 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: var(--dark);
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', 'Segoe UI', Roboto, sans-serif;
+            background: var(--apple-gray-50);
+            color: var(--apple-gray-900);
             min-height: 100vh;
-            padding: 20px;
-            position: relative;
+            line-height: 1.6;
             overflow-x: hidden;
         }
 
-        .bat-background {
+        /* ===== FONDO GRADIENTE APPLE ===== */
+        .apple-gradient-bg {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 30%, rgba(255, 107, 53, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 80% 70%, rgba(10, 36, 114, 0.1) 0%, transparent 40%);
-            z-index: -1;
+            background: 
+                radial-gradient(circle at 0% 0%, rgba(255, 59, 48, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 100% 0%, rgba(0, 122, 255, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 50% 100%, rgba(255, 149, 0, 0.05) 0%, transparent 50%);
+            z-index: -2;
             pointer-events: none;
         }
 
-        .bat-icon {
-            position: fixed;
-            font-size: 300px;
-            color: rgba(255, 255, 255, 0.03);
-            z-index: -1;
-            pointer-events: none;
-            animation: float 20s infinite ease-in-out;
-        }
-
-        .bat-1 { top: 10%; left: 5%; }
-        .bat-2 { bottom: 15%; right: 8%; transform: rotate(30deg); }
-        .bat-3 { top: 40%; right: 15%; transform: rotate(-15deg); }
-
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(5deg); }
-        }
-
-        /* ===== CONTENEDOR PRINCIPAL (ESTILO WHATSAPP WEB) ===== */
-        .container {
-            max-width: 500px;
+        /* ===== CONTAINER APPLE ===== */
+        .apple-container {
+            max-width: 480px;
             width: 100%;
             margin: 0 auto;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            overflow: hidden;
+            padding: 24px;
             position: relative;
         }
 
-        /* ===== HEADER (INSPIRADO EN WHATSAPP) ===== */
-        .header {
-            background: linear-gradient(135deg, var(--secondary) 0%, var(--primary) 100%);
-            color: white;
-            padding: 25px 20px;
+        /* ===== NAVBAR APPLE ===== */
+        .apple-navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 0;
+            margin-bottom: 24px;
+            position: sticky;
+            top: 0;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: saturate(180%) blur(20px);
+            -webkit-backdrop-filter: saturate(180%) blur(20px);
+            z-index: 100;
+            border-bottom: 1px solid var(--apple-gray-100);
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .apple-logo {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            font-size: 20px;
+            font-weight: 600;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .brand-text {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--dark);
+            letter-spacing: -0.5px;
+        }
+
+        .navbar-actions {
+            display: flex;
+            gap: 12px;
+        }
+
+        .nav-icon-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-full);
+            background: var(--apple-gray-100);
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--apple-gray-900);
+            font-size: 16px;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+        }
+
+        .nav-icon-btn:hover {
+            background: var(--apple-gray-200);
+            transform: scale(1.05);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .apple-hero {
             text-align: center;
+            margin-bottom: 48px;
+            animation: fadeInUp 800ms ease-out;
+        }
+
+        .hero-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            border-radius: var(--radius-xl);
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--light);
+            font-size: 48px;
+            box-shadow: 
+                var(--shadow-lg),
+                0 0 0 4px rgba(255, 255, 255, 0.9),
+                0 0 40px rgba(255, 59, 48, 0.2);
+            animation: float 6s ease-in-out infinite;
             position: relative;
             overflow: hidden;
         }
 
-        .header::before {
+        .hero-icon::before {
             content: '';
             position: absolute;
             top: -50%;
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 50px 50px;
-            animation: moveGrid 20s linear infinite;
+            background: linear-gradient(
+                45deg,
+                transparent 30%,
+                rgba(255, 255, 255, 0.1) 50%,
+                transparent 70%
+            );
+            transform: rotate(45deg);
+            animation: shine 3s infinite;
         }
 
-        @keyframes moveGrid {
-            0% { transform: translate(0, 0); }
-            100% { transform: translate(50px, 50px); }
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(5deg); }
         }
 
-        .logo-container {
-            position: relative;
-            z-index: 2;
+        @keyframes shine {
+            0% { transform: translateX(-100%) rotate(45deg); }
+            100% { transform: translateX(100%) rotate(45deg); }
         }
 
-        .taxi-icon {
-            font-size: 48px;
-            margin-bottom: 15px;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-        }
-
-        h1 {
-            font-size: 2.2rem;
+        .hero-title {
+            font-size: 40px;
             font-weight: 700;
+            color: var(--dark);
             margin-bottom: 8px;
-            letter-spacing: -0.5px;
+            letter-spacing: -1px;
+            line-height: 1.1;
         }
 
-        .tagline {
-            font-size: 1rem;
-            opacity: 0.9;
-            font-weight: 300;
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--apple-gray-600);
+            font-weight: 400;
+            margin-bottom: 24px;
         }
 
-        /* ===== BOTONES (ESTILO WHATSAPP) ===== */
-        .btn-container {
-            padding: 25px 20px;
+        .hero-stats {
             display: flex;
-            flex-direction: column;
-            gap: 15px;
-            background: var(--light);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            justify-content: center;
+            gap: 32px;
+            margin-top: 32px;
         }
 
-        .btn {
-            padding: 18px 24px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--apple-gray-600);
+            font-weight: 500;
+            margin-top: 4px;
+        }
+
+        /* ===== ACTION BUTTONS APPLE ===== */
+        .apple-actions {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 16px;
+            margin-bottom: 48px;
+            animation: fadeInUp 800ms ease-out 200ms both;
+        }
+
+        .apple-btn {
             display: flex;
             align-items: center;
-            justify-content: flex-start;
-            gap: 15px;
-            transition: var(--transition);
+            padding: 20px 24px;
+            background: var(--light);
+            border-radius: var(--radius-lg);
+            text-decoration: none;
+            color: var(--dark);
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--apple-gray-100);
+            transition: all var(--transition-base);
             position: relative;
             overflow: hidden;
-            border: none;
-            cursor: pointer;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
         }
 
-        .btn::before {
+        .apple-btn::after {
             content: '';
             position: absolute;
             top: 50%;
@@ -183,200 +300,338 @@
             width: 0;
             height: 0;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(0, 0, 0, 0.05);
             transform: translate(-50%, -50%);
             transition: width 0.6s, height 0.6s;
         }
 
-        .btn:hover::before {
+        .apple-btn:hover::after {
             width: 300px;
             height: 300px;
         }
 
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        .apple-btn:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
         }
 
-        .btn:active {
-            transform: translateY(-1px);
+        .apple-btn:active {
+            transform: translateY(-2px);
         }
 
-        .btn i {
-            font-size: 1.4rem;
-            width: 24px;
-            text-align: center;
+        .btn-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            font-size: 20px;
+            flex-shrink: 0;
         }
 
-        .btn-text {
+        .btn-content {
             flex: 1;
+            text-align: left;
         }
 
-        .btn-badge {
-            background: rgba(255, 255, 255, 0.2);
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 500;
+        .btn-title {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 4px;
         }
 
-        .btn-whatsapp {
-            background: var(--whatsapp);
+        .btn-description {
+            font-size: 14px;
+            color: var(--apple-gray-600);
+            font-weight: 400;
+        }
+
+        .btn-arrow {
+            color: var(--apple-gray-600);
+            font-size: 14px;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all var(--transition-base);
+        }
+
+        .apple-btn:hover .btn-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        /* Colores específicos de botones */
+        .btn-whatsapp .btn-icon {
+            background: linear-gradient(135deg, #25D366 0%, #1DA851 100%);
             color: white;
         }
 
-        .btn-call {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+        .btn-call .btn-icon {
+            background: linear-gradient(135deg, var(--primary) 0%, #FF2D20 100%);
             color: white;
         }
 
-        .btn-instagram {
+        .btn-instagram .btn-icon {
             background: linear-gradient(45deg, #405DE6, #833AB4, #C13584, #E1306C, #FD1D1D);
             color: white;
         }
 
-        /* ===== SECCIONES DE INFORMACIÓN (ESTILO CHATS) ===== */
-        .info-sections {
-            padding: 20px;
+        .btn-location .btn-icon {
+            background: linear-gradient(135deg, var(--secondary) 0%, #0056CC 100%);
+            color: white;
         }
 
-        .info-card {
-            background: white;
-            border-radius: var(--radius);
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            border-left: 5px solid var(--primary);
-            transition: var(--transition);
-            cursor: default;
+        /* ===== FEATURES APPLE ===== */
+        .apple-features {
+            margin-bottom: 48px;
+            animation: fadeInUp 800ms ease-out 400ms both;
         }
 
-        .info-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
-        }
-
-        .info-card h2 {
+        .section-header {
             display: flex;
             align-items: center;
-            gap: 10px;
-            color: var(--secondary);
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            font-weight: 600;
+            justify-content: space-between;
+            margin-bottom: 24px;
         }
 
-        .info-card h2 i {
-            color: var(--primary);
-            font-size: 1.2rem;
+        .section-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--dark);
+            letter-spacing: -0.5px;
         }
 
-        .info-card p, .info-card li {
-            color: #555;
-            line-height: 1.6;
-            margin-bottom: 10px;
+        .section-subtitle {
+            font-size: 17px;
+            color: var(--apple-gray-600);
+            font-weight: 400;
         }
 
-        .info-card ul {
-            list-style: none;
-            padding-left: 0;
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 16px;
         }
 
-        .info-card li {
-            position: relative;
-            padding-left: 25px;
-            margin-bottom: 12px;
-        }
-
-        .info-card li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--primary);
-            font-weight: bold;
-        }
-
-        .highlight {
-            background: linear-gradient(120deg, rgba(255, 107, 53, 0.1) 0%, rgba(255, 158, 109, 0.1) 100%);
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 15px;
-            border: 1px solid rgba(255, 107, 53, 0.2);
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            background: var(--secondary);
-            color: white;
-            padding: 25px 20px;
+        .feature-card {
+            background: var(--light);
+            border-radius: var(--radius-lg);
+            padding: 24px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--apple-gray-100);
+            transition: all var(--transition-base);
             text-align: center;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        .footer p {
-            margin-bottom: 10px;
-            opacity: 0.9;
+        .feature-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
         }
 
-        .footer strong {
-            color: var(--accent);
-        }
-
-        .copyright {
-            font-size: 0.9rem;
-            opacity: 0.7;
-            margin-top: 15px;
-        }
-
-        /* ===== EFECTO LOADING (AL ESTILO WHATSAPP) ===== */
-        .typing-indicator {
-            display: inline-flex;
+        .feature-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-md);
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            display: flex;
             align-items: center;
-            gap: 4px;
-            margin-left: 10px;
+            justify-content: center;
+            margin: 0 auto 16px;
+            color: var(--light);
+            font-size: 24px;
         }
 
-        .typing-indicator span {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.7);
-            animation: typing 1.4s infinite ease-in-out;
+        .feature-title {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--dark);
+            margin-bottom: 8px;
         }
 
-        .typing-indicator span:nth-child(1) { animation-delay: -0.32s; }
-        .typing-indicator span:nth-child(2) { animation-delay: -0.16s; }
-
-        @keyframes typing {
-            0%, 80%, 100% { transform: scale(0); }
-            40% { transform: scale(1); }
+        .feature-description {
+            font-size: 14px;
+            color: var(--apple-gray-600);
+            line-height: 1.4;
         }
 
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 480px) {
-            .container {
-                margin: 10px;
-                max-width: calc(100% - 20px);
-            }
-            
-            .header {
-                padding: 20px 15px;
-            }
-            
-            h1 {
-                font-size: 1.8rem;
-            }
-            
-            .btn {
-                padding: 16px 20px;
-            }
-            
-            .bat-icon {
-                font-size: 200px;
-            }
+        /* ===== DETAILS APPLE ===== */
+        .apple-details {
+            animation: fadeInUp 800ms ease-out 600ms both;
         }
 
-        /* ===== ANIMACIÓN DE ENTRADA ===== */
+        .detail-card {
+            background: var(--light);
+            border-radius: var(--radius-lg);
+            padding: 32px;
+            margin-bottom: 24px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--apple-gray-100);
+            transition: all var(--transition-base);
+        }
+
+        .detail-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .detail-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .detail-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            background: var(--apple-gray-100);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 16px;
+            color: var(--secondary);
+            font-size: 20px;
+        }
+
+        .detail-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--dark);
+            flex: 1;
+        }
+
+        .detail-content {
+            color: var(--apple-gray-900);
+            line-height: 1.7;
+        }
+
+        .detail-list {
+            list-style: none;
+        }
+
+        .detail-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid var(--apple-gray-100);
+        }
+
+        .detail-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+
+        .item-icon {
+            width: 24px;
+            height: 24px;
+            border-radius: var(--radius-full);
+            background: var(--secondary);
+            color: var(--light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 12px;
+            flex-shrink: 0;
+            font-size: 12px;
+            margin-top: 2px;
+        }
+
+        .item-text {
+            flex: 1;
+            font-size: 16px;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, rgba(0, 122, 255, 0.05) 0%, rgba(255, 59, 48, 0.05) 100%);
+            border-radius: var(--radius-md);
+            padding: 20px;
+            margin-top: 20px;
+            border: 1px solid rgba(0, 122, 255, 0.1);
+        }
+
+        /* ===== FOOTER APPLE ===== */
+        .apple-footer {
+            background: var(--dark);
+            color: var(--light);
+            border-radius: var(--radius-xl);
+            padding: 40px 32px;
+            margin-top: 48px;
+            position: relative;
+            overflow: hidden;
+            animation: fadeInUp 800ms ease-out 800ms both;
+        }
+
+        .footer-bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(255, 59, 48, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(0, 122, 255, 0.1) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .footer-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .footer-header {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+        .footer-logo {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--light) 0%, var(--apple-gray-200) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .footer-subtitle {
+            font-size: 14px;
+            color: var(--apple-gray-600);
+            font-weight: 400;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin-bottom: 32px;
+        }
+
+        .footer-column h4 {
+            font-size: 17px;
+            font-weight: 600;
+            margin-bottom: 12px;
+            color: var(--light);
+        }
+
+        .footer-column p {
+            font-size: 14px;
+            color: var(--apple-gray-600);
+            margin-bottom: 8px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 24px;
+            text-align: center;
+            font-size: 12px;
+            color: var(--apple-gray-600);
+        }
+
+        /* ===== ANIMACIONES ===== */
         @keyframes fadeInUp {
             from {
                 opacity: 0;
@@ -388,149 +643,380 @@
             }
         }
 
-        .container > * {
-            animation: fadeInUp 0.6s ease-out forwards;
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 480px) {
+            .apple-container {
+                padding: 16px;
+            }
+            
+            .hero-title {
+                font-size: 32px;
+            }
+            
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
         }
 
-        .header { animation-delay: 0.1s; }
-        .btn-container { animation-delay: 0.2s; }
-        .info-card:nth-child(1) { animation-delay: 0.3s; }
-        .info-card:nth-child(2) { animation-delay: 0.4s; }
-        .info-card:nth-child(3) { animation-delay: 0.5s; }
-        .footer { animation-delay: 0.6s; }
+        /* ===== UTILITIES ===== */
+        .text-gradient {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
     </style>
 </head>
 <body>
-    <!-- Fondo con murciélagos -->
-    <div class="bat-background"></div>
-    <div class="bat-icon bat-1">🦇</div>
-    <div class="bat-icon bat-2">🦇</div>
-    <div class="bat-icon bat-3">🦇</div>
+    <!-- Fondo estilo Apple -->
+    <div class="apple-gradient-bg"></div>
 
-    <!-- Contenedor principal estilo WhatsApp -->
-    <div class="container">
-        <!-- Header inspirado en WhatsApp -->
-        <div class="header">
-            <div class="logo-container">
-                <div class="taxi-icon">🚕</div>
-                <h1>Taxi Drácula</h1>
-                <p class="tagline">
-                    Seguridad y profesionalismo en Puerto Cabello 
-                    <span class="typing-indicator">
-                        <span></span><span></span><span></span>
-                    </span>
-                </p>
+    <!-- Contenedor principal -->
+    <div class="apple-container">
+        <!-- Navbar al estilo Apple -->
+        <nav class="apple-navbar glass-effect">
+            <div class="navbar-brand">
+                <div class="apple-logo">T</div>
+                <span class="brand-text">Taxi Drácula</span>
             </div>
-        </div>
+            <div class="navbar-actions">
+                <button class="nav-icon-btn" onclick="scrollToSection('features')">
+                    <i class="fas fa-star"></i>
+                </button>
+                <button class="nav-icon-btn" onclick="scrollToSection('contact')">
+                    <i class="fas fa-phone"></i>
+                </button>
+            </div>
+        </nav>
 
-        <!-- Botones de acción (estilo WhatsApp Web) -->
-        <div class="btn-container">
-            <a href="https://wa.me/584123480093" class="btn btn-whatsapp">
-                <i class="fab fa-whatsapp"></i>
-                <span class="btn-text">Pedir por WhatsApp</span>
-                <span class="btn-badge">Online</span>
-            </a>
+        <!-- Hero Section -->
+        <section class="apple-hero">
+            <div class="hero-icon">
+                <i class="fas fa-taxi"></i>
+            </div>
+            <h1 class="hero-title">Taxi Drácula</h1>
+            <p class="hero-subtitle">Transporte premium en Puerto Cabello</p>
             
-            <a href="tel:04123480093" class="btn btn-call">
-                <i class="fas fa-phone-alt"></i>
-                <span class="btn-text">Llamar Ahora</span>
-                <span class="btn-badge">24/7</span>
-            </a>
-            
-            <a href="https://www.instagram.com/taxidraculapc/" class="btn btn-instagram">
-                <i class="fab fa-instagram"></i>
-                <span class="btn-text">Síguenos en Instagram</span>
-                <span class="btn-badge">Nuevo</span>
-            </a>
-        </div>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-value">24/7</div>
+                    <div class="stat-label">Disponibilidad</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">8+</div>
+                    <div class="stat-label">Años</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value">100%</div>
+                    <div class="stat-label">Seguro</div>
+                </div>
+            </div>
+        </section>
 
-        <!-- Secciones de información (estilo chats) -->
-        <div class="info-sections">
-            <div class="info-card">
-                <h2><i class="fas fa-map-marker-alt"></i> 📍 Ubicación</h2>
-                <p>Punto fijo en el <strong>Malecón de Puerto Cabello</strong>, frente al Teatro Municipal.</p>
-                <div class="highlight">
-                    <p><i class="fas fa-clock"></i> <strong>Horario:</strong> Disponible 24 horas, 7 días a la semana</p>
+        <!-- Botones de Acción -->
+        <section class="apple-actions" id="contact">
+            <a href="https://wa.me/584123480093" class="apple-btn btn-whatsapp">
+                <div class="btn-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="btn-content">
+                    <div class="btn-title">Pedir por WhatsApp</div>
+                    <div class="btn-description">Respuesta inmediata 24/7</div>
+                </div>
+                <div class="btn-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </a>
+
+            <a href="tel:04123480093" class="apple-btn btn-call">
+                <div class="btn-icon">
+                    <i class="fas fa-phone-alt"></i>
+                </div>
+                <div class="btn-content">
+                    <div class="btn-title">Llamar Ahora</div>
+                    <div class="btn-description">Contacto directo</div>
+                </div>
+                <div class="btn-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </a>
+
+            <a href="https://www.instagram.com/taxidraculapc/" class="apple-btn btn-instagram">
+                <div class="btn-icon">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <div class="btn-content">
+                    <div class="btn-title">Instagram</div>
+                    <div class="btn-description">Síguenos para novedades</div>
+                </div>
+                <div class="btn-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </a>
+
+            <a href="https://maps.google.com/?q=Malecón+de+Puerto+Cabello" class="apple-btn btn-location">
+                <div class="btn-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <div class="btn-content">
+                    <div class="btn-title">Ubicación</div>
+                    <div class="btn-description">Malecón de Puerto Cabello</div>
+                </div>
+                <div class="btn-arrow">
+                    <i class="fas fa-chevron-right"></i>
+                </div>
+            </a>
+        </section>
+
+        <!-- Características -->
+        <section class="apple-features" id="features">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title">Por qué elegirnos</h2>
+                    <p class="section-subtitle">Excelencia en cada viaje</p>
                 </div>
             </div>
 
-            <div class="info-card">
-                <h2><i class="fas fa-star"></i> ⭐ Ventajas Exclusivas</h2>
-                <ul>
-                    <li><strong>Seguridad Total:</strong> Conductor verificados y vehículos en óptimas condiciones.</li>
-                    <li><strong>Disponibilidad Prioritaria:</strong> Especialistas en servicio nocturno y fines de semana.</li>
-                    <li><strong>Expertos Locales:</strong> Conocemos cada rincón de la ciudad y las mejores rutas.</li>
-                    <li><strong>Tarifas Justas:</strong> Precios transparentes sin sorpresas al final del viaje.</li>
-                </ul>
-            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Seguridad</h3>
+                    <p class="feature-description">Conductores verificados y vehículos en perfecto estado</p>
+                </div>
 
-            <div class="info-card">
-                <h2><i class="fas fa-users"></i> 💡 Ideal para Turistas</h2>
-                <p>Si visitas Puerto Cabello, somos tu transporte de confianza. Te llevamos a:</p>
-                <ul>
-                    <li>Teatro Municipal y Plaza Bolívar</li>
-                    <li>Restaurantes del malecón y zona turística</li>
-                    <li>Playas y puntos de interés histórico</li>
-                    <li>Eventos especiales y convenciones</li>
-                </ul>
-                <div class="highlight">
-                    <p><i class="fas fa-lightbulb"></i> <strong>Consejo:</strong> Pregúntanos por los mejores lugares para comer y visitar</p>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="feature-title">24/7</h3>
+                    <p class="feature-description">Disponibilidad continua, día y noche</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3 class="feature-title">Experiencia</h3>
+                    <p class="feature-description">Conocimiento completo de la ciudad</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <h3 class="feature-title">Tarifas justas</h3>
+                    <p class="feature-description">Precios transparentes sin sorpresas</p>
                 </div>
             </div>
-        </div>
+        </section>
+
+        <!-- Detalles -->
+        <section class="apple-details">
+            <div class="detail-card">
+                <div class="detail-header">
+                    <div class="detail-icon">
+                        <i class="fas fa-map-pin"></i>
+                    </div>
+                    <h3 class="detail-title">📍 Ubicación Estratégica</h3>
+                </div>
+                <div class="detail-content">
+                    <p>Punto fijo en el <strong class="text-gradient">Malecón de Puerto Cabello</strong>, frente al Teatro Municipal. Ubicación perfecta para acceso rápido a toda la ciudad.</p>
+                    <div class="highlight-box">
+                        <p><i class="fas fa-clock"></i> <strong>Horario:</strong> Servicio disponible las 24 horas, los 7 días de la semana</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="detail-card">
+                <div class="detail-header">
+                    <div class="detail-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="detail-title">💡 Ideal para Turistas</h3>
+                </div>
+                <div class="detail-content">
+                    <ul class="detail-list">
+                        <li class="detail-item">
+                            <div class="item-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="item-text">Teatro Municipal y Plaza Bolívar</div>
+                        </li>
+                        <li class="detail-item">
+                            <div class="item-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="item-text">Restaurantes del malecón y zona turística</div>
+                        </li>
+                        <li class="detail-item">
+                            <div class="item-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="item-text">Playas y puntos de interés histórico</div>
+                        </li>
+                        <li class="detail-item">
+                            <div class="item-icon">
+                                <i class="fas fa-check"></i>
+                            </div>
+                            <div class="item-text">Eventos especiales y convenciones</div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
 
         <!-- Footer -->
-        <div class="footer">
-            <p><strong>Presidente:</strong> Carlos Besio</p>
-            <p><strong>Fundado:</strong> 2015 • Más de 8 años de servicio</p>
-            <p><strong>Contacto Principal:</strong> 0412-348-0093</p>
-            <p class="copyright">Puerto Cabello, Venezuela © 2026 • Taxi Drácula</p>
-        </div>
+        <footer class="apple-footer">
+            <div class="footer-bg"></div>
+            <div class="footer-content">
+                <div class="footer-header">
+                    <div class="footer-logo">Taxi Drácula</div>
+                    <p class="footer-subtitle">Transporte de confianza desde 2015</p>
+                </div>
+
+                <div class="footer-grid">
+                    <div class="footer-column">
+                        <h4>Contacto</h4>
+                        <p><strong>Teléfono:</strong> 0412-348-0093</p>
+                        <p><strong>WhatsApp:</strong> +58 412-3480093</p>
+                        <p><strong>Horario:</strong> 24/7</p>
+                    </div>
+                    <div class="footer-column">
+                        <h4>Información</h4>
+                        <p><strong>Presidente:</strong> Carlos Besio</p>
+                        <p><strong>Fundado:</strong> 2015</p>
+                        <p><strong>Ubicación:</strong> Puerto Cabello</p>
+                    </div>
+                </div>
+
+                <div class="footer-bottom">
+                    <p>© 2026 Taxi Drácula. Todos los derechos reservados.</p>
+                    <p>Diseño inspirado en la estética Apple</p>
+                </div>
+            </div>
+        </footer>
     </div>
 
+    <!-- JavaScript -->
     <script>
-        // Efectos interactivos
+        // Scroll suave
+        function scrollToSection(sectionId) {
+            const section = document.getElementById(sectionId);
+            if (section) {
+                section.scrollIntoView({ 
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        }
+
+        // Efecto de carga progresiva
         document.addEventListener('DOMContentLoaded', function() {
-            // Efecto de escritura en el tagline
-            const tagline = document.querySelector('.tagline');
-            const originalText = tagline.textContent.replace('...', '');
-            
-            // Efecto de "mensaje enviado" en botones
-            const buttons = document.querySelectorAll('.btn');
-            buttons.forEach(btn => {
-                btn.addEventListener('click', function(e) {
-                    if(this.href.includes('wa.me')) {
-                        this.querySelector('.btn-badge').textContent = 'Enviando...';
-                        setTimeout(() => {
-                            this.querySelector('.btn-badge').textContent = '✓ Enviado';
-                        }, 800);
+            // Animación de entrada para elementos
+            const animateOnScroll = function() {
+                const elements = document.querySelectorAll('.apple-hero, .apple-actions, .apple-features, .apple-details, .apple-footer');
+                
+                elements.forEach(element => {
+                    const elementPosition = element.getBoundingClientRect().top;
+                    const screenPosition = window.innerHeight / 1.2;
+                    
+                    if (elementPosition < screenPosition) {
+                        element.style.opacity = '1';
+                        element.style.transform = 'translateY(0)';
                     }
                 });
-            });
-
-            // Animación al hacer scroll
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
             };
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if(entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
-
-            // Observar todas las tarjetas
-            document.querySelectorAll('.info-card').forEach(card => {
-                card.style.opacity = '0';
-                card.style.transform = 'translateY(20px)';
-                card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-                observer.observe(card);
+            // Inicializar opacidad
+            document.querySelectorAll('.apple-hero, .apple-actions, .apple-features, .apple-details, .apple-footer').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
             });
+
+            // Trigger inicial
+            animateOnScroll();
+
+            // Scroll listener
+            window.addEventListener('scroll', animateOnScroll);
+
+            // Efecto de click en botones
+            document.querySelectorAll('.apple-btn').forEach(btn => {
+                btn.addEventListener('click', function(e) {
+                    // Efecto de onda
+                    const rect = this.getBoundingClientRect();
+                    const x = e.clientX - rect.left;
+                    const y = e.clientY - rect.top;
+                    
+                    const ripple = document.createElement('span');
+                    ripple.style.position = 'absolute';
+                    ripple.style.borderRadius = '50%';
+                    ripple.style.background = 'rgba(255, 255, 255, 0.4)';
+                    ripple.style.transform = 'translate(-50%, -50%) scale(0)';
+                    ripple.style.animation = 'ripple 0.6s linear';
+                    ripple.style.left = x + 'px';
+                    ripple.style.top = y + 'px';
+                    ripple.style.width = '100px';
+                    ripple.style.height = '100px';
+                    
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+
+            // Agregar animación ripple
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes ripple {
+                    to {
+                        transform: translate(-50%, -50%) scale(4);
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
         });
+
+        // Actualizar hora actual en el footer
+        function updateTime() {
+            const now = new Date();
+            const timeString = now.toLocaleTimeString('es-VE', { 
+                hour: '2-digit', 
+                minute: '2-digit',
+                hour12: false 
+            });
+            
+            const timeElement = document.querySelector('.hero-stats .stat-value:nth-child(3)');
+            if (timeElement && !timeElement.hasAttribute('data-original')) {
+                timeElement.setAttribute('data-original', timeElement.textContent);
+                timeElement.textContent = timeString;
+            }
+        }
+
+        // Actualizar cada minuto
+        setInterval(updateTime, 60000);
+        updateTime(); // Inicial
     </script>
 </body>
 </html>
